@@ -80,13 +80,13 @@ House-Price-Prediction
 
 ## 📷 Screenshots
 
-### Home Page
+<h2>example</h2>
 
-(Add screenshot here)
+<img src="screenshots/.png" width="800">
 
-### Prediction Result
+<h2>example</h2>
 
-(Add screenshot here)
+<img src="screenshots/home.png" width="800">
 
 ---
 

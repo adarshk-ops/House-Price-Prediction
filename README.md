@@ -82,11 +82,11 @@ House-Price-Prediction
 
 <h2>example</h2>
 
-<img src="screenshots/.png" width="800">
+<img src="screenshots/S1.png" width="800">
 
 <h2>example</h2>
 
-<img src="screenshots/home.png" width="800">
+<img src="screenshots/S2.png" width="800">
 
 ---
 

@@ -1,0 +1,15 @@
+venv/
+__pycache__/
+*.pyc
+
+.vscode/
+.idea/
+
+.env
+
+.ipynb_checkpoints/
+
+*.pkl.old
+
+Thumbs.db
+.DS_Store

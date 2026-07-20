@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bengaluru House Price Predictor</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="bg-orbs">
+
+    <span class="orb orb-1"></span>
+
+    <span class="orb orb-2"></span>
+
+    <span class="orb orb-3"></span>
+
+</div>
+
+<main class="shell">
+
+<section class="card">
+
+<header class="header">
+
+<h1>🏠 Bengaluru House Price Predictor</h1>
+
+<p>
+Estimate a fair market price for any property in Bengaluru.
+</p>
+
+</header>
+
+<form
+action="/predict"
+method="POST"
+class="form"
+id="predictionForm">
+
+<div class="input-group">
+
+<label>Area Type</label>
+
+<select
+name="area_type"
+required>
+
+<option value="Super built-up Area"
+{% if form.get('area_type')=="Super built-up Area" %}selected{% endif %}>
+Super built-up Area
+</option>
+
+<option value="Built-up Area"
+{% if form.get('area_type')=="Built-up Area" %}selected{% endif %}>
+Built-up Area
+</option>
+
+<option value="Plot Area"
+{% if form.get('area_type')=="Plot Area" %}selected{% endif %}>
+Plot Area
+</option>
+
+<option value="Carpet Area"
+{% if form.get('area_type')=="Carpet Area" %}selected{% endif %}>
+Carpet Area
+</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<label>Location</label>
+
+<input
+type="text"
+name="location"
+placeholder="Whitefield"
+value="{{ form.get('location','') }}"
+required>
+
+</div>
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Total Sq. Ft.</label>
+
+<input
+type="number"
+name="total_sqft"
+placeholder="1200"
+value="{{ form.get('total_sqft','') }}"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>Bathrooms</label>
+
+<input
+type="number"
+name="bath"
+placeholder="2"
+value="{{ form.get('bath','') }}"
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Balconies</label>
+
+<input
+type="number"
+name="balcony"
+placeholder="2"
+value="{{ form.get('balcony','') }}"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>BHK</label>
+
+<input
+type="number"
+name="bhk"
+placeholder="2"
+value="{{ form.get('bhk','') }}"
+required>
+
+</div>
+
+</div>
+
+<button
+type="submit"
+class="predict-btn"
+id="predictBtn">
+
+<span id="btnText">
+
+🚀 Predict Price
+
+</span>
+
+</button>
+
+</form>
+
+{% if error %}
+
+<div class="error-card">
+
+{{ error }}
+
+</div>
+
+{% endif %}
+
+{% if prediction %}
+
+<div class="result-card">
+
+<span class="result-label">
+
+Estimated Price
+
+</span>
+
+<div class="price">
+
+{{ prediction }}
+
+</div>
+
+<p class="result-hint">
+
+Indicative estimate based on the trained machine learning model.
+
+</p>
+
+</div>
+
+{% endif %}
+
+</section>
+
+<footer class="foot">
+
+Built using Flask · Scikit-Learn · Linear Regression
+
+</footer>
+
+</main>
+
+<script>
+
+const form = document.getElementById("predictionForm");
+
+const btn = document.getElementById("predictBtn");
+
+const btnText = document.getElementById("btnText");
+
+form.addEventListener("submit",()=>{
+
+btn.disabled=true;
+
+btnText.innerHTML="⏳ Predicting...";
+
+});
+
+</script>
+
+</body>
+
+</html>
